@@ -1,7 +1,7 @@
 # BTA Utils
 
 Initially started as a controller fix,
-this is the dumping ground for small vanilla-compatible QoL features.
+this is the dumping ground for small non-modded-compatible QoL features.
 Everything is toggleable in the config.
 
 So far we have
