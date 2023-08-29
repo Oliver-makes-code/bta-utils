@@ -7,8 +7,10 @@ import net.fabricmc.api.ModInitializer;
 public class BtaUtilsMod implements ModInitializer {
     @Override
     public void onInitialize() {
-        DiscordClient.init();
-        DiscordChatRelay.sendMessageAsBot("**Server Started**");
+        new Thread(() -> {
+            DiscordClient.init();
+            DiscordChatRelay.sendMessageAsBot("**Server Started**");
+        }).start();
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             DiscordChatRelay.sendMessageAsBot("**Server Stopped**");
         }));
