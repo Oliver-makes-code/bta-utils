@@ -11,6 +11,7 @@ public class DiscordChatRelay {
     public static void sendToMinecraft(String author, String message) {
         MinecraftServer server = MinecraftServer.getInstance();
         message = "[" + TextFormatting.PURPLE + "DISCORD" + TextFormatting.RESET + "] <" + author + "> " + message;
+        System.out.println(message);
         String[] lines = message.split("\n");
         for (String chatMessage : lines) {
             server.configManager.sendEncryptedChatToAllPlayers(

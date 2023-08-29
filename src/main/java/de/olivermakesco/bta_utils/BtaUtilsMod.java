@@ -11,8 +11,5 @@ public class BtaUtilsMod implements ModInitializer {
             DiscordClient.init();
             DiscordChatRelay.sendMessageAsBot("**Server Started**");
         }).start();
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            DiscordChatRelay.sendMessageAsBot("**Server Stopped**");
-        }));
     }
 }
