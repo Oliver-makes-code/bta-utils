@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "de.olivermakesco.bta_utils.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "core.Mixin_BlockFarmland",
+    "server.Mixin_NetLoginHandler",
+    "server.Mixin_NetServerHandler"
+  ],
+  "client": [
+    "client.Mixin_ControllerInput",
+    "client.Mixin_SDL2Controller"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

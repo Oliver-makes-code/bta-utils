@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "bta_utils",
+  "version": "${version}",
+
+  "name": "BTA Utils",
+  "description": "A collection of utilities to make BTA even better!",
+  "authors": [
+    "Octal"
+  ],
+  "contact": {
+    "sources": ""
+  },
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "de.olivermakesco.bta_utils.BtaUtilsMod"
+    ],
+    "client": [
+      "de.olivermakesco.bta_utils.client.BtaUtilsClient"
+    ]
+  },
+  "mixins": [
+    "bta_utils.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.13.3"
+  }
+}
