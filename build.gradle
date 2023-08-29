@@ -75,15 +75,12 @@ dependencies {
 	mappings loom.layered() {}
 
 	implementation "com.github.electronstudio:sdl2gdx:1.0.3"
-	include "com.github.electronstudio:sdl2gdx:1.0.3"
-	include "com.badlogicgames.gdx:gdx:1.9.9"
-	include "com.badlogicgames.gdx:gdx-controllers:1.9.9"
-	include "com.badlogicgames.gdx:gdx-jnigen:1.9.10"
+	includeInJar "com.github.electronstudio:sdl2gdx:1.0.3"
 	implementation "net.dv8tion:JDA:5.0.0-beta.13"
-	include "net.dv8tion:JDA:5.0.0-beta.13"
+	includeInJar "net.dv8tion:JDA:5.0.0-beta.13"
 	implementation "club.minnced:discord-webhooks:0.8.4"
-	include "club.minnced:discord-webhooks:0.8.4"
-	include "com.google.code.gson:gson:2.8.9"
+	includeInJar "club.minnced:discord-webhooks:0.8.4"
+	includeInJar "com.google.code.gson:gson:2.8.9"
 
 	modRuntimeOnly "objects:client:43db9b498cb67058d2e12d394e6507722e71bb45" // https://piston-data.mojang.com/v1/objects/43db9b498cb67058d2e12d394e6507722e71bb45/client.jar
 	modImplementation "fabric-loader:fabric-loader:${project.loader_version}"
@@ -120,6 +117,7 @@ jar {
 	from("LICENSE") {
 		rename { "${it}_${archivesBaseName}" }
 	}
+	from(configurations.named("includeInJar").get().collect { zipTree(it) })
 	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
