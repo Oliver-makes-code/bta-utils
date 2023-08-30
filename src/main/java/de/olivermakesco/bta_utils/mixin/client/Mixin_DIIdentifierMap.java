@@ -16,7 +16,7 @@ public class Mixin_DIIdentifierMap {
             at = @At("RETURN"),
             cancellable = true
     )
-    static void returnUnknownIfNull(int id, CallbackInfoReturnable<Component.Identifier.Button> cir) {
+    private static void returnUnknownIfNull(int id, CallbackInfoReturnable<Component.Identifier.Button> cir) {
         if (cir.getReturnValue() == null) {
             cir.setReturnValue(Component.Identifier.Button.UNKNOWN);
         }
