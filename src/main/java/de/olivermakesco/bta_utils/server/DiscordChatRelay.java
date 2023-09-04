@@ -2,6 +2,7 @@ package de.olivermakesco.bta_utils.server;
 
 import club.minnced.discord.webhook.external.JDAWebhookClient;
 import club.minnced.discord.webhook.send.WebhookMessageBuilder;
+import de.olivermakesco.bta_utils.BtaUtilsMod;
 import de.olivermakesco.bta_utils.config.BtaUtilsConfig;
 import net.dv8tion.jda.api.entities.channel.middleman.StandardGuildMessageChannel;
 import net.minecraft.core.net.command.TextFormatting;
@@ -11,7 +12,7 @@ public class DiscordChatRelay {
     public static void sendToMinecraft(String author, String message) {
         MinecraftServer server = MinecraftServer.getInstance();
         message = "[" + TextFormatting.PURPLE + "DISCORD" + TextFormatting.RESET + "] <" + author + "> " + message;
-        System.out.println(message);
+        BtaUtilsMod.info(message);
         String[] lines = message.split("\n");
         for (String chatMessage : lines) {
             server.configManager.sendEncryptedChatToAllPlayers(

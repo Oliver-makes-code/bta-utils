@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import de.olivermakesco.bta_utils.BtaUtilsMod;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.*;
@@ -88,6 +89,12 @@ public class BtaUtilsConfig {
 
     public static File getFilePath() {
         return FabricLoader.getInstance().getConfigDir().resolve("bta_utils.json").toFile();
+    }
+
+    public static void printConfigValues() {
+        BtaUtilsMod.info("use_sdl = " + useSdl);
+        BtaUtilsMod.info("disable_trample = " + disableTrample);
+        BtaUtilsMod.info("discord.enable = " + discord_enable);
     }
 
     static {

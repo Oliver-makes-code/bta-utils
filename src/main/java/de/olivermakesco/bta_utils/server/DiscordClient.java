@@ -1,6 +1,7 @@
 package de.olivermakesco.bta_utils.server;
 
 import club.minnced.discord.webhook.external.JDAWebhookClient;
+import de.olivermakesco.bta_utils.BtaUtilsMod;
 import de.olivermakesco.bta_utils.config.BtaUtilsConfig;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -23,22 +24,26 @@ public class DiscordClient {
     public static JDAWebhookClient webhook;
     public static StandardGuildMessageChannel channel;
 
-    public static void init() {
+    public static boolean init() {
         if (!BtaUtilsConfig.discord_enable) {
-            return;
+            return false;
         }
 
-        JDABuilder builder = JDABuilder.create(
-                BtaUtilsConfig.discord_token,
-                GatewayIntent.GUILD_MESSAGES,
-                GatewayIntent.MESSAGE_CONTENT,
-                GatewayIntent.GUILD_WEBHOOKS
-        );
-        builder.addEventListeners(new Listener());
         try {
+            JDABuilder builder = JDABuilder.create(
+                    BtaUtilsConfig.discord_token,
+                    GatewayIntent.GUILD_MESSAGES,
+                    GatewayIntent.MESSAGE_CONTENT,
+                    GatewayIntent.GUILD_WEBHOOKS
+            );
+            builder.addEventListeners(new Listener());
+
             jda = builder.build().awaitReady();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+
+            return true;
+        } catch (Throwable t) {
+            BtaUtilsMod.LOGGER.debug("Unable to start discord bot.", t);
+            return false;
         }
     }
 
