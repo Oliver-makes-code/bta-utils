@@ -110,24 +110,17 @@ public class DiscordClient {
                     return;
                 }
 
-                Member member = message.getMember();
                 User user = message.getAuthor();
 
-                String username = getDisplayName(user, member);
+                String username = getDisplayName(user);
                 String content = ChatEmotes.process(message.getMessage().getContentStripped());
 
                 DiscordChatRelay.sendToMinecraft(username, content);
             }
         }
 
-        public static String getDisplayName(User user, @Nullable Member member) {
-            String username = pick(user.getGlobalName(), user.getName());
-
-            if (member == null) {
-                return username;
-            }
-
-            return pick(member.getNickname(), username);
+        public static String getDisplayName(User user) {
+            return user.getName();
         }
 
         public static String pick(@Nullable String first, @Nullable String second) {

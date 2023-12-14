@@ -13,7 +13,9 @@ public class Mixin_MinecraftServer {
             method = "initiateShutdown",
             at = @At("RETURN")
     )
+
     void sendStopMessage(CallbackInfo ci) {
-        DiscordChatRelay.sendMessageAsBot("**Server stopped.**");
+        DiscordChatRelay.sendMessageAsBot("**Server Stopped**");
     }
+
 }
