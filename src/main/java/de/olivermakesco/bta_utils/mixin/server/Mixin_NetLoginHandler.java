@@ -22,8 +22,8 @@ public class Mixin_NetLoginHandler {
             ),
             locals = LocalCapture.CAPTURE_FAILHARD
     )
-    void sendLoginMessage(Packet1Login packet1login, CallbackInfo ci, EntityPlayerMP player) {
-        String username = player.getDisplayName().replaceFirst("^§0", "");
+    void sendJoinMessage(Packet1Login packet1login, CallbackInfo ci, EntityPlayerMP player) {
+        String username = player.username;
         DiscordChatRelay.sendJoinLeaveMessage(username, true);
     }
 }

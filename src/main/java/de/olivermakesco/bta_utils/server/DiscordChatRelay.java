@@ -7,6 +7,7 @@ import de.olivermakesco.bta_utils.config.BtaUtilsConfig;
 import net.dv8tion.jda.api.entities.channel.middleman.StandardGuildMessageChannel;
 import net.minecraft.core.net.command.TextFormatting;
 import net.minecraft.server.MinecraftServer;
+import org.jetbrains.annotations.Nullable;
 
 public class DiscordChatRelay {
     public static void sendToMinecraft(String author, String message) {
@@ -15,7 +16,7 @@ public class DiscordChatRelay {
         BtaUtilsMod.info(message);
         String[] lines = message.split("\n");
         for (String chatMessage : lines) {
-            server.configManager.sendEncryptedChatToAllPlayers(
+            server.playerList.sendEncryptedChatToAllPlayers(
                     chatMessage
             );
         }
@@ -33,7 +34,7 @@ public class DiscordChatRelay {
 
         WebhookMessageBuilder builder = new WebhookMessageBuilder();
         builder.setUsername(author);
-        builder.setAvatarUrl("https://visage.surgeplay.com/face/256/"+author);
+        builder.setAvatarUrl("https://visage.surgeplay.com/face/216/" + author);
         builder.setContent(message);
         webhook.send(builder.build());
     }
