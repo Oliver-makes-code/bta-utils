@@ -16,7 +16,7 @@ public class DiscordChatRelay {
         BtaUtilsMod.info(message);
         String[] lines = message.split("\n");
         for (String chatMessage : lines) {
-            server.configManager.sendEncryptedChatToAllPlayers(
+            server.playerList.sendEncryptedChatToAllPlayers(
                     chatMessage
             );
         }
